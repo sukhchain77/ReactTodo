@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import todo from './images/Logo.png';
+import '../App.css';
 
 
 
@@ -9,8 +10,25 @@ const Todo = ()=>{
     const [items,setItems] = useState([]);
 
     const addItem = () =>{
-        setItems(...items,setItems)
+        if(!inputData){
 
+        }else{
+        setItems([...items,inputData])
+        setInputdata('')
+        }
+
+    }
+
+    const deleteItem =(id) =>{
+       console.log(id);
+       const updatedItem = items.filter((ele,index) =>{
+           return index != id;
+       })
+       setItems(updatedItem)
+    } 
+
+    const removeItem = () =>{
+        setItems([])
     }
     return (
         <>
@@ -22,20 +40,27 @@ const Todo = ()=>{
                     
                 </figure>
                 <div className='addItem'>
-                    <input type="text" name='' id='' placeholder='Add Items..' value={inputData} 
+                    <input type="text" name='' className='inputrecord' placeholder='Add Items..' value={inputData} 
                     onChange= {(e) => setInputdata(e.target.value) }/>
                     <i className="fa fa-plus add-btn" title='Add Items' onClick={addItem}></i>
 
                 </div>
                 <div className='showItem'>
-                  <div className='eachItem'>
-                     <h1>Apple</h1>
-                     <i className="fa fa-trash add-btn" title='Delete Items'></i>
-                  </div>
+                    {
+                      items.map((ele,index) =>{
+                        return (
+                            <div className='eachItem' key={index}>
+                            <h3>{ele}</h3>
+                            <i className="fa fa-trash add-btn" title='Delete Items' onClick={() => deleteItem(index)}></i>
+                            </div>
+                        )
+                      })
+                    }
+                  
                 </div>
 
                 <div className='showItem'>
-                    <button className='btn'> Check list</button>
+                    <button className='btn' onClick={removeItem}> Check list</button>
 
                 </div>
 

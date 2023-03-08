@@ -1,5 +1,38 @@
+img{
+  width: 200px;
+}
+.addItem{
+  width: 250px;
+    text-align: center;
+    margin: auto;
+    background: #fff;
+    border-radius: 5px;
+  
+}
+.showItem {
+  margin-top: 20px;
+}
+.btn {
+  width: 107px;
+  height: 37px;
+  text-transform: uppercase;
+}
+.inputrecord{
+  height: 34px;
+  border: none;
+  margin-right: 40px;
+  
+}
+body{
+  background: #152238;
+}
 .App {
   text-align: center;
+ 
+}
+figcaption {
+  color: #fff;
+  font-size: 20px;
 }
 
 .App-logo {
